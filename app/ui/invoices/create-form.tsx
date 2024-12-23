@@ -24,7 +24,6 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             Choose customer
           </label>
           <div className="relative">
-            <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
             <select
               required
               id="customer"
@@ -42,7 +41,9 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                 </option>
               ))}
             </select>
-            <div id="customer-error" aria-live="polite" aria-atomic="true">
+            <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+          </div>
+          <div id="customer-error" aria-live="polite" aria-atomic="true">
               {state.errors?.customerId &&
                 state.errors.customerId.map((error: string) => (
                   <p className="mt-2 text-sm text-red-500" key={error}>
@@ -50,7 +51,6 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   </p>
                 ))}
             </div>
-          </div>
         </div>
 
         {/* Invoice Amount */}
