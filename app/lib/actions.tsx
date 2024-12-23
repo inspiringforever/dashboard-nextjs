@@ -14,14 +14,14 @@ export type State = {
   message?: string | null;
 };
  
-export type formData = {
-  errors?: {
-    customerId?: string[];
-    amount?: string[];
-    status?: string[];
-  };
-  message?: string | null;
-};
+// export type formData = {
+//   errors?: {
+//     customerId?: string[];
+//     amount?: string[];
+//     status?: string[];
+//   };
+//   message?: string | null;
+// };
 
 
 const FormSchema = z.object({
@@ -108,6 +108,7 @@ export async function updateInvoice(
       WHERE id = ${id}
     `;
   } catch (error) {
+    console.error(error);
     return { message: 'Database Error: Failed to Update Invoice.' };
   }
  
@@ -121,6 +122,7 @@ export async function deleteInvoice(id: string) {
     revalidatePath('/dashboard/invoices');
     return { message: 'Deleted Invoice.' };
   } catch (error) {
+    console.error(error);
     return { message: 'Database Error: Failed to Delete Invoice.' };
   }
 }
